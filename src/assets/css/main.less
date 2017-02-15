@@ -1,0 +1,152 @@
+.px2rem(@name, @px){
+    @{name}: @px / 100 * 1rem;
+}
+
+.px2px(@name, @px){
+    @{name}: round(@px / 2) * 1px;
+    [data-dpr="2"] & {
+        @{name}: @px * 1px;
+    }
+    // for mx3
+    [data-dpr="2.5"] & {
+        @{name}: round(@px * 2.5 / 2) * 1px;
+    }
+    // for 小米note
+    [data-dpr="2.75"] & {
+        @{name}: round(@px * 2.75 / 2) * 1px;
+    }
+    [data-dpr="3"] & {
+        @{name}: round(@px * 3/ 2) * 1px
+    }
+    // for 三星note4
+    [data-dpr="4"] & {
+        @{name}: @px * 2px;
+    }
+}
+
+@base-grey: #ececec;
+@base-line: #b1b1b1;
+@main-color: #2bace9;
+@secondary-color: #ff9000;
+@red: #F3683F;
+@fm: "PingFangSC-Regular";
+@fm-semi: "PingFangSC-Semibold";
+@fm-light: "PingFangSC-Light";
+@fm-thin: "PingFangSC-Thin";
+@fm-ultra: "PingFangSC-Ultralight";
+
+html {
+	background-color: #fff;
+}
+body {
+  background-color: #fff;
+  line-height: 1.5;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	font-family: @fm;
+	&.semi {
+		font-family: @fm-semi;
+	}
+	&.light {
+		font-family: @fm-light;
+	}
+	&.thin {
+		font-family: @fm-thin;
+	}
+	&.ultra {
+		font-family: @fm-ultra;
+	}
+}
+
+h3, h4, h5, h6, p {
+	font-weight: normal;
+}
+
+h1 {
+	.px2rem(font-size, 36);
+}
+h2 {
+	.px2rem(font-size, 32);
+}
+h3 {
+	.px2rem(font-size, 28);
+}
+h4, p {
+	.px2rem(font-size, 24);
+}
+h5 {
+	.px2rem(font-size, 22);
+}
+h6 {
+	.px2rem(font-size, 18);
+}
+
+a {
+	text-decoration: underline;
+	color: @main-color;
+}
+
+.el-input {
+	.el-input__inner {
+		font-family: @fm-thin;
+	}
+	&.el-input--large {
+		font-size: .28rem!important;
+		.el-input__inner {
+			height: 1.1rem;
+		}
+	}
+	&.el-input--small {
+		font-size: .24rem!important;
+		.el-input__inner {
+			height: .76rem;
+		}
+	}
+	&.el-input--mini {
+		font-size: .24rem!important;
+		.el-input__inner {
+			height: .86rem;
+		}
+	}
+}
+
+.el-button {
+	display: block;
+	font-family: @fm-thin;
+}
+
+.box_wrap {
+	background-color: #fff;
+	.px2rem(margin-bottom, 20);
+	.title {
+		box-sizing: border-box;
+		.px2rem(height, 86);
+		.px2rem(padding-top, 30);
+		.px2rem(padding-bottom, 30);
+		.px2rem(padding-left, 20);
+		.px2rem(padding-right, 20);
+		border-bottom: 1px solid @base-line;
+		line-height: 1;
+		&.link {
+			background-color: @main-color;
+			color: #fff;
+			h3 {
+				padding-left: .3rem;
+				font-size: .26rem;
+			}
+		}
+	}
+	.content {
+		text-align: center;
+	}
+	.item {
+		padding: .35rem .65rem;
+		border-bottom: 1px solid @base-grey;
+	}
+	.list {
+		padding: .3rem .2rem;
+		border-bottom: 1px solid @base-grey;
+	}
+}
